@@ -243,14 +243,14 @@ class Zend implements Persistence
     public function fetchPage($entityName, array $expressions)
     {
         $gateway = $this->getTableGateway($entityName);
-        list ($select, $pageNumber, $pageSize)
+        list ($select, $limitStart, $limitSize)
             = $gateway->translate($expressions);
 
         $adapter = new DbSelect($select, $this, $entityName);
-        $paginator = new \Zend_Paginator($adapter);
-        if (($pageNumber !== null) && ($pageSize !== null)) {
-            $paginator->setCurrentPageNumber($pageNumber)
-                ->setItemCountPerPage($pageSize);
+        $paginator = new \Serquant\Paginator\Paginator($adapter);
+        if (($limitStart !== null) && ($limitSize !== null)) {
+            $paginator->setItemCountPerPage($limitSize)
+                ->setItemOffset($limitStart);
         }
         return $paginator;
     }

@@ -278,12 +278,7 @@ class Table extends \Zend_Db_Table_Abstract
             $select->order($orderBy);
         }
 
-        if (($limitStart !== null) && ($limitCount !== null)) {
-            $pageNumber = ($limitStart / $limitCount) + 1;
-            $pageSize = $limitCount;
-        }
-
-        return array($select, $pageNumber, $pageSize);
+        return array($select, $limitStart, $limitCount);
     }
 
     /**

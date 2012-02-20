@@ -1354,7 +1354,7 @@ tt|e |i |o r
             <arg line="--report=checkstyle
                        --standard=${phpcs.standard}
                        --warning-severity=1
-                       ${basedir}/${source.root.dir}" />
+                &quot;${basedir}/${source.root.dir}&quot;" />
         </exec>
     </target>
 
